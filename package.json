@@ -6,9 +6,6 @@
     "scripts": {
         "build": "rm -rf dist/ && tsc"
     },
-    "files": [
-        "dist/CurseforgeService.js"
-    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/itsjusttriz/moddedmc-api.git"

@@ -1,0 +1,1 @@
+export { CurseforgeService } from './CurseforgeService';
