@@ -80,7 +80,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist #- Dont ignore this, so users can import. 
 .output
 
 # Gatsby files
