@@ -8,6 +8,7 @@ class CurseforgeService {
             CurseforgeService.instance = new this();
         return CurseforgeService.instance;
     }
+    constructor() { }
     _token = '';
     hasToken() {
         return !!this._token?.length;
