@@ -6,6 +6,8 @@ export class CurseforgeService {
 		return CurseforgeService.instance;
 	}
 
+	private constructor() {}
+
 	private _token: string = '';
 	protected hasToken() {
 		return !!this._token?.length;
