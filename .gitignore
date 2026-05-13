@@ -1,3 +1,7 @@
+# Custom
+tests/
+env.json
+
 # Logs
 logs
 *.log

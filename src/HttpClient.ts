@@ -1,11 +1,9 @@
+import { type Result } from './utils/types';
+
 type ApiClientConfig = {
 	baseUrl: string;
 	defaultHeaders: Headers;
 };
-
-type Ok<T> = [null, T];
-type Failed = [Error, null];
-type Result<T> = Ok<T> | Failed;
 
 export class HttpClient {
 	private BASE_URL: URL;
@@ -50,12 +48,13 @@ export class HttpClient {
 
 		try {
 			const json = await response.json();
+
 			return [null, json];
 		} catch (error) {
 			return [
 				error instanceof Error
 					? error
-					: new Error('Failed to parse text'),
+					: new Error('Failed to parse json'),
 				null,
 			];
 		}
@@ -71,15 +70,17 @@ export class HttpClient {
 		const headers = new Headers(this.DEFAULT_HEADERS);
 
 		if (_headers) {
-			for (const [key, value] of _headers) {
+			_headers.forEach((value, key) => {
 				headers.append(key, value);
-			}
+			});
 		}
 
 		const url = new URL(_url, this.BASE_URL);
 
 		try {
-			const response = await fetch(url, { headers });
+			const response = await fetch(url, {
+				headers: Object.fromEntries(headers.entries()),
+			});
 
 			if (!response.ok) {
 				throw new Error(
