@@ -1,9 +1,9 @@
-declare class ModpackObject {
-    #private;
-    constructor(data: Record<string, any>);
-    protected get raw(): Record<string, unknown>;
+import { CurseForgeModpackDev } from './ModpackDeveloperObject';
+import { SecureObject } from './utils/SecureObject';
+export declare class CurseforgeModpack extends SecureObject {
+    get id(): string;
+    get name(): string;
+    get dev(): CurseForgeModpackDev;
+    get launcher(): string;
+    get link(): any;
 }
-export declare class CurseforgeModpack extends ModpackObject {
-    get id(): any;
-}
-export {};
